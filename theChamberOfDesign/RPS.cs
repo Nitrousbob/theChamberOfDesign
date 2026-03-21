@@ -16,11 +16,13 @@ namespace theChamberOfDesign
     internal class RPS
     {
         public int Round { get; set; }
+        
 
         public RPS(int round = 0)
         {
             Round = round;
         }
+
 
     }
 }

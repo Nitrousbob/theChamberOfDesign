@@ -9,6 +9,12 @@ namespace theChamberOfDesign
         public string Name { get; set; }
         public int Score { get; set; }
         public int Draw {  get; set; }
+        public enum Weapon
+        {
+            Rock,
+            Paper,
+            Scissors
+        }
 
         public RPSPlayer(string name) 
         {
