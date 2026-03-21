@@ -38,14 +38,14 @@
 
         public static RPS.TurnOutcome RPSEvaluate(RPS.Weapon c1, RPS.Weapon c2)
         {
-            if (c1 == c2) { return RPS.TurnOutcome.Draw; }  //get a draw out of the way
+            //if (c1 == c2) { return RPS.TurnOutcome.Draw; }  //get a draw out of the way
             if (c1 == RPS.Weapon.Rock && c2 == RPS.Weapon.Paper) { return RPS.TurnOutcome.Lose; }  //referring to the first player
             if (c1 == RPS.Weapon.Paper && c2 == RPS.Weapon.Rock) { return RPS.TurnOutcome.Win; } //paper beats rock
             if (c1 == RPS.Weapon.Scissors && c2 == RPS.Weapon.Paper) { return RPS.TurnOutcome.Win; } //scissors beats paper
             if (c1 == RPS.Weapon.Paper && c2 == RPS.Weapon.Scissors) { return RPS.TurnOutcome.Lose; } // paper lose to scissors
             if (c1 == RPS.Weapon.Scissors && c2 == RPS.Weapon.Rock) { return RPS.TurnOutcome.Lose; } //scissors lose to rock
             if (c1 == RPS.Weapon.Rock && c2 == RPS.Weapon.Scissors) { return RPS.TurnOutcome.Win; } //rock beats scissors
-
+            return RPS.TurnOutcome.Draw;  //return draw if no other option
             //we can flip the outcome for the other player
         }
 

@@ -21,6 +21,7 @@
 
         public static void RPSPlay(RPS game)
         {
+            RPS.TurnOutcome outcome;
             //update Round
             game.Round += 1;
             Console.WriteLine($"Round {game.Round}!");
@@ -28,10 +29,24 @@
             //could make a list of players to use
             RPS.Weapon player2Choice = RPSTurn(game.Player2);
             //take in weapons and output outcomes.  (maybe a tuple, a single with a flip for both, but a flip for draw is equal?)
-            RPS.RPSEvaluate(player1Choice, player2Choice);
+            outcome = RPS.RPSEvaluate(player1Choice, player2Choice);
+            if (outcome == RPS.TurnOutcome.Win)
+            {
+                Console.WriteLine($"{game.Player1.Name} is the winner of this round! ");
+                game.Player1.Wins += 1;
+            }
+            if (outcome == RPS.TurnOutcome.Lose)
+            {
+                Console.WriteLine($"{game.Player2.Name} is the winner of this round! ");
+                game.Player2.Wins += 1;
+            }
+            if (outcome == RPS.TurnOutcome.Draw)
+            {
+                Console.WriteLine($"Well played you two, this round is a draw! ");
+                game.DrawCount += 1;
+            }
             //update the game state
             
-
         }
 
         public static RPS.Weapon RPSTurn(RPSPlayer p)  //this will return the enum called RPS.Weapon, we dont put Enum in the signature
