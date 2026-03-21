@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-
-namespace theChamberOfDesign
+﻿namespace theChamberOfDesign
 {
     internal static class RPSDisplay
     {
@@ -20,22 +15,30 @@ namespace theChamberOfDesign
             string p2Name = Console.ReadLine() ?? "";
             RPSPlayer Player2 = new RPSPlayer(p2Name);
             //create player two
-            RPS Game = new RPS(0); //create a new game and start with round 0
+            RPS Game = new RPS(Player1, Player2); //create a new game and start with round 0
+            RPSPlay(Game);  //sends us into the game.
         }
 
-        public static void RPSPlay()
+        public static void RPSPlay(RPS game)
         {
             //update Round
-            var game = RPS.Game;
+            game.Round += 1;
+            Console.WriteLine($"Round {game.Round}!");
+            RPSTurn(game.Player1);
             //could make a list of players to use
-            var p1 = RPSPlayer(Player1);
+            RPSTurn(game.Player2);
             
-            //foreach could go through the list
-            Console.WriteLine($"{p1} choose your weapon. [R]ock, [P]aper, [S]cissors");
 
             //we could check the outcomes of the battle
 
             //update round
+        }
+
+        public static void RPSTurn(RPSPlayer p)
+        {
+            Console.WriteLine($"{p.Name} choose your weapon. [R]ock, [P]aper, [S]cissors");
+            //this is where i thought I should have the player store their selection.
+            Console.ReadLine();
         }
     }
 }

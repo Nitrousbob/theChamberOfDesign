@@ -1,26 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace theChamberOfDesign
+﻿namespace theChamberOfDesign
 {
     internal class RPSPlayer
     {
         public string Name { get; set; }
-        public int Score { get; set; }
-        public int Draw {  get; set; }
-        public enum Weapon
-        {
-            Rock,
-            Paper,
-            Scissors
-        }
+        public int Wins { get; set; } = 0;
+        
 
-        public RPSPlayer(string name) 
+        public RPSPlayer(string name)
         {
             Name = name;
-            Score = 0;
-            Draw = 0;
         }
 
     }

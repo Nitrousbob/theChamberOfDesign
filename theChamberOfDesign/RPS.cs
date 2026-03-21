@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace theChamberOfDesign
+﻿namespace theChamberOfDesign
 {
     //two human players compete against each other
     //each player picks rock, paper, or scissors
@@ -15,12 +11,22 @@ namespace theChamberOfDesign
     //does not need to be a full game, just a potential design as a starting point
     internal class RPS
     {
-        public int Round { get; set; }
+        public int Round { get; set; } = 0;
+        public int DrawCount { get; set; } = 0;
+        public RPSPlayer Player1 { get; }
+        public RPSPlayer Player2 { get; }
         
-
-        public RPS(int round = 0)
+        public enum Weapon
         {
-            Round = round;
+            Rock,
+            Paper,
+            Scissors
+        }
+
+        public RPS(RPSPlayer player1, RPSPlayer player2)
+        {
+            Player1 = player1;
+            Player2 = player2;
         }
 
 
