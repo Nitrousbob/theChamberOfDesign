@@ -27,11 +27,11 @@
             RPS.Weapon player1Choice = RPSTurn(game.Player1);
             //could make a list of players to use
             RPS.Weapon player2Choice = RPSTurn(game.Player2);
+            //take in weapons and output outcomes.  (maybe a tuple, a single with a flip for both, but a flip for draw is equal?)
+            RPS.RPSEvaluate(player1Choice, player2Choice);
+            //update the game state
             
 
-            //we could check the outcomes of the battle
-
-            //update round
         }
 
         public static RPS.Weapon RPSTurn(RPSPlayer p)  //this will return the enum called RPS.Weapon, we dont put Enum in the signature
@@ -65,5 +65,6 @@
                 }
             }
         }
+
     }
 }
