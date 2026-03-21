@@ -24,9 +24,9 @@
             //update Round
             game.Round += 1;
             Console.WriteLine($"Round {game.Round}!");
-            RPSTurn(game.Player1);
+            RPS.Weapon player1Choice = RPSTurn(game.Player1);
             //could make a list of players to use
-            RPSTurn(game.Player2);
+            RPS.Weapon player2Choice = RPSTurn(game.Player2);
             
 
             //we could check the outcomes of the battle
@@ -34,11 +34,36 @@
             //update round
         }
 
-        public static void RPSTurn(RPSPlayer p)
+        public static RPS.Weapon RPSTurn(RPSPlayer p)  //this will return the enum called RPS.Weapon, we dont put Enum in the signature
         {
-            Console.WriteLine($"{p.Name} choose your weapon. [R]ock, [P]aper, [S]cissors");
-            //this is where i thought I should have the player store their selection.
-            Console.ReadLine();
+            char input;
+            while (true)  //keep asking until sucessful creation of our output
+            {
+                do Console.WriteLine($"{p.Name} choose your weapon. [R]ock, [P]aper, [S]cissors");
+                while (!char.TryParse(Console.ReadLine(), out input));  //did I get a single character (shape of input)
+                input = Char.ToLower(input);
+
+                if (input == 'r' || input == 'p' || input == 's')  //the meaning of the input
+                {
+                    if (input == 'r')
+                    {
+                        return RPS.Weapon.Rock;
+                    }
+                    else if (input == 'p')
+                    {
+                        return RPS.Weapon.Paper;
+                    }
+                    //verify our char choice and turn the choice into
+                    else
+                    {
+                        return RPS.Weapon.Scissors;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Please choose from 'r', 'p', or 's'");
+                }
+            }
         }
     }
 }
