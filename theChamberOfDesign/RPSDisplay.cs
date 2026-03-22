@@ -16,7 +16,11 @@
             RPSPlayer player2 = new RPSPlayer(p2Name);
             //create player two
             RPS game = new RPS(player1, player2); //create a new game and start with round 0
-            RPSPlay(game);  //sends us into the game.
+            while (true)
+            {
+                RPSPlay(game);  //sends us into the game.
+                DisplayScoreBoard(game);
+            }
         }
 
         public static void RPSPlay(RPS game)
@@ -24,7 +28,6 @@
 
             RPS.TurnOutcome outcome;
             game.Round += 1;
-            Console.WriteLine($"Round {game.Round}, {game.Player1.Name}-[{game.Player1.Wins}] {game.Player2.Name}-[{game.Player2.Wins}]  Draws {game.DrawCount}!");
             
             RPS.Weapon player1Choice = RPSTurn(game.Player1);
             RPS.Weapon player2Choice = RPSTurn(game.Player2);
@@ -41,10 +44,15 @@
             }
             if (outcome == RPS.TurnOutcome.Draw)
             {
-                Console.WriteLine($"Well played you two, this round is a draw! ");
+                Console.WriteLine($"Well played you two, Round {game.Round} is a draw! ");
             }
 
             RPS.UpDateScore(outcome, game); //update the score
+        }
+
+        public static void DisplayScoreBoard(RPS game)
+        {
+            Console.WriteLine($"{game.Player1.Name}-[{game.Player1.Wins}] {game.Player2.Name}-[{game.Player2.Wins}]  Draws-[{game.DrawCount}].");
         }
 
         public static RPS.Weapon RPSTurn(RPSPlayer p)  //this will return the enum called RPS.Weapon, we dont put Enum in the signature

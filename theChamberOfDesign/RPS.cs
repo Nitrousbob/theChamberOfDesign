@@ -80,7 +80,7 @@ namespace theChamberOfDesign
             {
                 game.Player1.Wins += 1;
             }
-            if (outcome == TurnOutcome.Lose)
+            else if (outcome == TurnOutcome.Lose)
             {
                 game.Player2.Wins += 1;
             }
