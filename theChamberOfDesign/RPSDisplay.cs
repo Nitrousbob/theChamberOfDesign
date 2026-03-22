@@ -18,7 +18,7 @@
             RPS game = new RPS(player1, player2); //create a new game and start with round 0
             while (true)
             {
-                RPSPlay(game);  //sends us into the game.
+                RPSPlay(game);
                 DisplayScoreBoard(game);
             }
         }
@@ -28,26 +28,30 @@
 
             RPS.TurnOutcome outcome;
             game.Round += 1;
-            
+           
             RPS.Weapon player1Choice = RPSTurn(game.Player1);
             RPS.Weapon player2Choice = RPSTurn(game.Player2);
             
             outcome = RPS.RPSEvaluate(player1Choice, player2Choice);
+            DisplayOutcome(game, outcome);
             
+            RPS.UpDateScore(outcome, game); //update the score
+        }
+
+        public static void DisplayOutcome(RPS game, RPS.TurnOutcome outcome)
+        {
             if (outcome == RPS.TurnOutcome.Win)
             {
                 Console.WriteLine($"{game.Player1.Name} is the winner of this round! ");
             }
-            if (outcome == RPS.TurnOutcome.Lose)
+            else if (outcome == RPS.TurnOutcome.Lose)
             {
                 Console.WriteLine($"{game.Player2.Name} is the winner of this round! ");
             }
-            if (outcome == RPS.TurnOutcome.Draw)
+            else 
             {
                 Console.WriteLine($"Well played you two, Round {game.Round} is a draw! ");
             }
-
-            RPS.UpDateScore(outcome, game); //update the score
         }
 
         public static void DisplayScoreBoard(RPS game)
