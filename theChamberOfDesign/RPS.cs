@@ -73,15 +73,16 @@ namespace theChamberOfDesign
             return RPS.TurnOutcome.Draw;
         }
 
-        public static void UpDateScore(RPS.TurnOutcome, Game)
+        public static void UpDateScore(RPS.TurnOutcome outcome, RPS game)
         {
-            if (TurnOutcome == TurnOutcome.Win)
+
+            if (outcome == TurnOutcome.Win)
             {
-                player1.Wins += 1;
+                game.Player1.Wins += 1;
             }
-            else if (TurnOutcome != TurnOutcome.Win || TurnOutcome != TurnOutcome.Draw)
+            if (outcome == TurnOutcome.Lose)
             {
-                player2.Wins += 1;
+                game.Player2.Wins += 1;
             }
             else
             {
