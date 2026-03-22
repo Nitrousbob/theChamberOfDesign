@@ -30,21 +30,23 @@
             RPS.Weapon player2Choice = RPSTurn(game.Player2);
             //take in weapons and output outcomes.  (maybe a tuple, a single with a flip for both, but a flip for draw is equal?)
             outcome = RPS.RPSEvaluate(player1Choice, player2Choice);
+            
             if (outcome == RPS.TurnOutcome.Win)
             {
                 Console.WriteLine($"{game.Player1.Name} is the winner of this round! ");
-                game.Player1.Wins += 1;
+                //game.Player1.Wins += 1;
             }
             if (outcome == RPS.TurnOutcome.Lose)
             {
                 Console.WriteLine($"{game.Player2.Name} is the winner of this round! ");
-                game.Player2.Wins += 1;
+                //game.Player2.Wins += 1;
             }
             if (outcome == RPS.TurnOutcome.Draw)
             {
                 Console.WriteLine($"Well played you two, this round is a draw! ");
-                game.DrawCount += 1;
+                //game.DrawCount += 1;
             }
+            RPS.UpDateScore(outcome, game);
             //update the game state
             
         }

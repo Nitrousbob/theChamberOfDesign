@@ -1,4 +1,6 @@
-﻿namespace theChamberOfDesign
+﻿using System.Net.NetworkInformation;
+
+namespace theChamberOfDesign
 {
     //two human players compete against each other
     //each player picks rock, paper, or scissors
@@ -53,7 +55,7 @@
                 {
                     case Weapon.Rock:
                         if (c2 == Weapon.Paper)
-                        { return RPS.TurnOutcome.Lose;}
+                        { return RPS.TurnOutcome.Lose; }
                         else
                             return RPS.TurnOutcome.Win;
                     case Weapon.Paper:
@@ -69,6 +71,22 @@
                 }
             }
             return RPS.TurnOutcome.Draw;
+        }
+
+        public static void UpDateScore(RPS.TurnOutcome, Game)
+        {
+            if (TurnOutcome == TurnOutcome.Win)
+            {
+                player1.Wins += 1;
+            }
+            else if (TurnOutcome != TurnOutcome.Win || TurnOutcome != TurnOutcome.Draw)
+            {
+                player2.Wins += 1;
+            }
+            else
+            {
+                game.DrawCount++;
+            }
         }
     }
 }
